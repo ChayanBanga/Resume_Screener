@@ -25,11 +25,12 @@ if st.button("Analyze"):
             jd_text = extract_jd_text("temp_jd.jpg")
 
             # extract skills from both
-            resume_skills = call_ollama(prompt_extract_skills(resume_text))
-            jd_skills = call_ollama(prompt_extract_skills(jd_text))
+            resume_skills = call_llm(prompt_extract_skills(resume_text))
+            jd_skills = call_llm(prompt_extract_skills(jd_text))
 
             # compare
-            final_result = call_ollama(prompt_compare(resume_skills, jd_skills, mode))
+            final_result = call_llm(prompt_compare(resume_skills, jd_skills, mode))
+            
             print("=== RAW FINAL RESULT ===")
 
             print(final_result)
