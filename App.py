@@ -1,8 +1,6 @@
 import streamlit as st
 from Parser import extract_resume_text, extract_jd_text
 from prompt import prompt_extract_skills, prompt_compare
-from llm_router import call_ollama
-# from llm_router import call_ollama  ← comment this out
 from llm_router2 import call_llm
 import json
 
