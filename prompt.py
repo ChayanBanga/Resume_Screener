@@ -33,6 +33,10 @@ Job Required Skills:
 Mode: {mode}
 
 Rules:
+- Extract ALL skills mentioned anywhere in the text including in project descriptions, work experience, and profile summary
+- Do not miss any skill even if mentioned only once
+- Include synonyms e.g. "Hugging Face Transformers" and "HuggingFace" are the same skill
+- Do NOT add any text, notes or explanations after the closing }}
 - Do NOT add comments inside the JSON using // or #
 - If semantic_matches is empty, just return {{}}
 - Compare both skill lists carefully
