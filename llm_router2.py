@@ -1,9 +1,13 @@
 import requests
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+try:
+    import streamlit as st
+    GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+except:
+    from dotenv import load_dotenv
+    load_dotenv()
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 def call_ollama(prompt):
     url = "http://localhost:11434/api/generate"
@@ -24,6 +28,8 @@ def call_gemini(prompt):
     }
     response = requests.post(url, json=payload)
     result = response.json()
+    print("=== GEMINI RAW RESPONSE ===")
+    print(result)
     text = result["candidates"][0]["content"]["parts"][0]["text"]
     text = text.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
     return text
