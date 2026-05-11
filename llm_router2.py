@@ -48,7 +48,10 @@ def call_groq(prompt):
     }
     response = requests.post(url, headers=headers, json=payload)
     result = response.json()
+    print("=== GROQ RAW RESPONSE ===")
+    print(result)
     text = result["choices"][0]["message"]["content"]
+
     text = text.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
     return text
 
